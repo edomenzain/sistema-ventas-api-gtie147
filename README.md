@@ -99,3 +99,13 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 ## Autor(es)
 - [Eric Domenzain](https://github.com/ericdomen)
+
+## Migraciones
+### Instalar prima
+npm install prisma --save-dev
+
+### Inicializarlo con 
+npx prisma init --datasource-provider mysql
+
+### Ejecutar el comando
+npx prisma migrate dev --name init
