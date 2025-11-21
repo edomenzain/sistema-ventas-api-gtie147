@@ -11,9 +11,11 @@ export class UserService {
         //! SELECT name, lastname, created_at, role FROM user WHERE id != :id
         return await this.prisma.user.findMany({
             select: {
+                id: true,
                 password: false,
                 name: true,
                 lastname: true,
+                username: true,
                 created_at: true,
                 role: true
             },
