@@ -40,8 +40,8 @@ export class UserController {
         return this.userSvc.update();
     }
 
-    @Delete()
-    deleteUser(): string {
+    @Delete(':id')
+    deleteUser(@Param('id', ParseIntPipe) id: number): string {
         return this.userSvc.delete();
     }
 }
