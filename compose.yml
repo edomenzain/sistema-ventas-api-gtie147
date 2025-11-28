@@ -1,0 +1,29 @@
+services:
+  sistema-ventas-edm-api:
+    build: .
+    container_name: sistema-ventas-edm-api
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: mysql://root:root@db:3308/ventasdb
+      PORT: 3010
+    ports:
+      - "3010:3010"
+    command: >
+      sh -c "
+      npx prisma migrate deploy &&
+      node dist/src/main.js
+      "
+
+  db:
+    image: mysql:8
+    container_name: mysql-ventas
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ventasdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3308:3306"
